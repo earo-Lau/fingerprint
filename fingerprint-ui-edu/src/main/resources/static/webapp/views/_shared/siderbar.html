@@ -1,0 +1,11 @@
+
+<div id="sidebar" ng-controller="siderbarController">
+    <a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+    <ul>
+        <li ng-repeat="menu in menuList" ng-class="{ 'active' : menu.name == selecedMenu}">
+            <a href="{{menu.url}}" ng-click="menuClick(menu.name)">
+                <i class="icon {{menu.icon}}"></i> <span>{{menu.text}}</span>
+            </a>
+        </li>
+    </ul>
+</div>

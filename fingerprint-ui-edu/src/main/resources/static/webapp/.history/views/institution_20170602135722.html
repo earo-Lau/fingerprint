@@ -1,0 +1,95 @@
+<!--教育机构管理-->
+<div id="content-header">
+    <div id="breadcrumb">
+        <a href="#/institution" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>Home</a>
+    </div>
+    <h2>{{institution.name}}</h2>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid" ng-init="user.role='admin'; institution.edit=false">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon">
+                            <i class="icon-align-justify"></i>
+                        </span>
+                    <h5>机构信息</h5>
+                    <div ng-if="user.role=='admin'" class="buttons">
+                        <button class="btn btn-primary btn-small" ng-disabled="insitution.edit" ng-click="edit()">编辑</button>
+                    </div>
+                </div>
+                <div class="widget-content nopadding">
+                    <form ng-if="user.role=='admin' && institution.edit" class="form-horizontal">
+                        <div class="control-group">
+                            <label class="control-label">Logo: </label>
+                            <div class="controls">
+                                <img src="{{institution.logo}}" class="span4" />
+                                <input type="file" name="logo" id="logo" ng-model="institution.logo" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">联系电话: </label>
+                            <div class="controls">
+                                <input type="text" ng-model="institution.phone" class="span20" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">联系地址: </label>
+                            <div class="controls">
+                                <input type="text" ng-model="institution.address" class="span20" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">E-mail: </label>
+                            <div class="controls">
+                                <input type="text" ng-model="institution.email" class="span20" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">机构简介: </label>
+                            <div class="controls">
+                                <textarea class="span20" ng-model="institution.introduce"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-success" ng-click="update()">保存</button>
+                        </div>
+                    </form>
+
+                    <div ng-hide="institution.edit" class="form-horizontal">
+                        <div class="control-group">
+                            <label class="control-label">Logo: </label>
+                            <div class="controls">
+                                <img src="{{institution.logo}}" class="span4" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">联系电话: </label>
+                            <div class="controls">
+                                <span class="span20">{{institution.phone}}</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">联系地址: </label>
+                            <div class="controls">
+                                <span class="span20">{{institution.address}}</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">E-mail: </label>
+                            <div class="controls">
+                                <span class="span20">{{institution.email}}</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">机构简介: </label>
+                            <div class="controls">
+                                <span class="span20">{{institution.introduce}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
