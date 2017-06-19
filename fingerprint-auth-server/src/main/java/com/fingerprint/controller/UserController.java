@@ -18,17 +18,17 @@ import java.security.Principal;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    @Autowired
-    CustomUserService userService;
+//    @Autowired
+//    CustomUserService userService;
 
-    @RequestMapping("/current")
+    @RequestMapping(value = "/current", method = RequestMethod.GET)
     public Principal getUser(Principal principal){
         return principal;
     }
-
+/*
     @PreAuthorize("#oauth2.hasScope('server')")
     @RequestMapping(method = RequestMethod.POST)
     public User create(@RequestBody User user) {
         return userService.create(user);
-    }
+    }*/
 }

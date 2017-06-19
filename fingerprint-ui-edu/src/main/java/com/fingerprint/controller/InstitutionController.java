@@ -25,8 +25,8 @@ public class InstitutionController {
     InstitutionService institutionService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Institution> get(@PathVariable("id") long id){
-        return institutionHytrixService.get(id);
+    public Institution get(@PathVariable("id") long id){
+        return institutionService.get(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = { "application/json" })
