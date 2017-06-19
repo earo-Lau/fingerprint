@@ -30,8 +30,8 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
     @Autowired
     @Qualifier("authenticationManagerBean")
     AuthenticationManager authenticationManager;
-//    @Autowired
-//    CustomUserService customUserService;
+    @Autowired
+    CustomUserService customUserService;
     private TokenStore token = new InMemoryTokenStore();
 
 
@@ -41,7 +41,7 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.tokenStore(token)
-                //.userDetailsService(customUserService)
+                .userDetailsService(customUserService)
                 .authenticationManager(authenticationManager);
     }
 
@@ -61,9 +61,15 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
                     .accessTokenValiditySeconds(3600)
                     .refreshTokenValiditySeconds(2592000)
                 .and()
-                .withClient("institution").secret(SERVER_PWD).authorizedGrantTypes("client_credentials", "refresh_token").scopes("server").autoApprove(true)
+                    .withClient("institution")
+                    .secret(SERVER_PWD)
+                    .authorizedGrantTypes("client_credentials", "refresh_token")
+                    .scopes("server")
                 .and()
-                .withClient("subject").secret(SERVER_PWD).authorizedGrantTypes("client_credentials", "refresh_token").scopes("server").autoApprove(true);
+                    .withClient("subject")
+                    .secret(SERVER_PWD)
+                    .authorizedGrantTypes("client_credentials", "refresh_token")
+                    .scopes("server");
     }
 
     @Override
