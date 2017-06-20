@@ -5,6 +5,10 @@ define([], function () {
     function institutionService($resource) {
         var institution = $resource('/ins/:insId', {
             insId: '@id'
+        }, {
+            put:{
+                method: 'PUT'
+            }
         });
 
         return institution;
