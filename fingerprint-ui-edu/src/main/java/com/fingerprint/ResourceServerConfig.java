@@ -8,6 +8,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cloud.security.oauth2.client.feign.OAuth2FeignRequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
@@ -45,12 +46,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-//                .regexMatchers(".*\\.(css|js|jpg|png|gif)$", "/uaa/oauth/token").permitAll()
-                .anyRequest().permitAll()
-//            .and()
-//                .formLogin().loginPage("/webapp/login").permitAll()
-//            .and()
-//                .logout().permitAll()
+                .antMatchers(HttpMethod.POST, "/uaa/oauth/token").permitAll()
+                .regexMatchers(HttpMethod.GET,".*\\.(css|js|jpg|png|gif)$").permitAll()
+                .antMatchers(HttpMethod.GET, "/webapp/**.html").permitAll()
+                .anyRequest().authenticated()
             .and()
                 .csrf().disable();
     }

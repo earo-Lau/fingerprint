@@ -6,7 +6,7 @@
     <h2>{{institution.name}}</h2>
 </div>
 <div class="container-fluid">
-    <div class="row-fluid" ng-init="user.role='admin'; institution.edit=false">
+    <div class="row-fluid" ng-init="user.roles=['TEACHER']; institution.edit=false">
         <div class="span12">
             <div class="widget-box">
                 <div class="widget-title">
@@ -14,12 +14,12 @@
                             <i class="icon-align-justify"></i>
                         </span>
                     <h5>机构信息</h5>
-                    <div ng-if="user.role=='admin'" class="buttons">
+                    <div ng-if="user.roles.indexOf('ADMIN') > -1" class="buttons">
                         <button class="btn btn-primary btn-small" ng-disabled="institution.edit" ng-click="edit()">编辑</button>
                     </div>
                 </div>
                 <div class="widget-content nopadding">
-                    <form ng-if="user.role=='admin' && institution.edit" class="form-horizontal">
+                    <form ng-if="user.roles.indexOf('ADMIN') > -1 && institution.edit" class="form-horizontal">
                         <div class="control-group">
                             <label class="control-label">Logo: </label>
                             <div class="controls">

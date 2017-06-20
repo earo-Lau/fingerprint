@@ -22,6 +22,9 @@ require.config({
 
 require(['app'], function (app) {
     'use strict';
-
-    angular.bootstrap(document, ['myApp']);
+    if (!localStorage.getItem('token')) {
+        window.location.href = "/webapp/login.html";
+    } else {
+        angular.bootstrap(document, ['myApp']);
+    }
 });

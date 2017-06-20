@@ -45,11 +45,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                             System.out.println("request denied, Authorization: " + httpServletRequest.getHeader("Authorization"));
                 })
                 .and()
-                .authorizeRequests().anyRequest().authenticated()
+                    .authorizeRequests().anyRequest().authenticated()
                 .and()
-                .httpBasic()
+                    .httpBasic()
                 .and()
-                .csrf().disable();
+                    .csrf().disable();
     }
 
     @Override

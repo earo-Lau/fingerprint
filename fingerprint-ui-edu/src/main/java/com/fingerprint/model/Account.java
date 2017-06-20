@@ -1,20 +1,14 @@
 package com.fingerprint.model;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by lauearo on 08/06/2017.
  */
-@Entity
 public class Account implements Serializable {
-    @Id
-    @GeneratedValue
     private long id;
     private String username;
-
-    @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
     private List<Role> roles;
 
     private long institutionId;
@@ -30,6 +24,10 @@ public class Account implements Serializable {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public List<Role> getRoles() {

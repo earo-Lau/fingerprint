@@ -12,7 +12,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @EnableEurekaClient
 @EnableOAuth2Client
 @EnableFeignClients
-@EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class FingerprintAccountServiceApplication {
 

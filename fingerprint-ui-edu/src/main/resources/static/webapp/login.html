@@ -88,7 +88,10 @@
                     removeOauthTokenFromStorage();
                 }
             });
-        })
+        });
+        function removeOauthTokenFromStorage() {
+            localStorage.removeItem('token');
+        }
     </script>
 </body>
 

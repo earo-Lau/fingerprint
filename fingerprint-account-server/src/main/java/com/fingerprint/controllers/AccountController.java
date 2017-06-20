@@ -5,10 +5,7 @@ import com.fingerprint.model.User;
 import com.fingerprint.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -22,9 +19,9 @@ public class AccountController {
     @Autowired
     AccountService accountService;
 
-    @RequestMapping(value = "/current", method = RequestMethod.GET, consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-    public Account getCurrent(Principal principal) {
-        return accountService.findByName(principal.getName());
+    @RequestMapping(value = "/{username}", method = RequestMethod.GET, consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public Account get(@PathVariable("username") String username) {
+        return accountService.findByName(username);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE})

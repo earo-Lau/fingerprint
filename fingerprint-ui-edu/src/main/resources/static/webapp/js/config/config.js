@@ -4,7 +4,7 @@
 define([], function () {
     'use strict';
 
-    function config($routeProvider, $locationProvider) {
+    function config($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider
             .when('/institution', {
                 templateUrl: '/webapp/views/institution.html',
@@ -16,8 +16,10 @@ define([], function () {
             enable: true,
             requireBase: false
         });
+
+        $httpProvider.interceptors.push('resourceInterceptor');
     }
 
-    config.$inject = ['$routeProvider', '$locationProvider'];
+    config.$inject = ['$routeProvider', '$locationProvider', '$httpProvider'];
     return config;
 });
